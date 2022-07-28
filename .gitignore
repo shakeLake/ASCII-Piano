@@ -4,3 +4,4 @@ build/
 **/Makefile
 **/typescript
 **/cmake_install.cmake
+/exec.sh
