@@ -1,0 +1,6 @@
+CMakeFiles/
+build/
+**/CMakeCache.txt
+**/Makefile
+**/typescript
+**/cmake_install.cmake
