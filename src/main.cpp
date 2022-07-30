@@ -1,7 +1,5 @@
-#include <iostream>
-
 #include "midi_in.hpp"
-#include "midi_out.hpp"
+//#include "midi_out.hpp"
 
 int main()
 {
