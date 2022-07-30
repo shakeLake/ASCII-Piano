@@ -5,6 +5,8 @@
 
 #include <Windows.h>
 
+#include <cassert>
+
 class MidiInput
 {
 private:
@@ -15,13 +17,13 @@ private:
 
     UINT quantity_of_devices;
 
-    char lpData[256];
+    char lpDataArr[256];
     MIDIHDR phm;
 
     HMIDIIN hm;
 private:
     // Callback function
-    void CALLBACK midiCallBack(HMIDIIN, UINT, DWORD, DWORD, DWORD);
+    static void CALLBACK midiCallBack(HMIDIIN, UINT, DWORD, DWORD, DWORD);
 
     int midiCapabilities();
 

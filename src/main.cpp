@@ -3,7 +3,11 @@
 
 int main()
 {
-    std::cout << "Hello world!" << std::endl;
+    MidiInput pno;
+
+    pno.start();
+
+    pno.hold();
 
     return 0;
 }

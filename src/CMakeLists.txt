@@ -6,4 +6,4 @@ add_library(midi_in_out midi_in.cpp midi_in.hpp midi_out.cpp midi_out.hpp)
 
 add_executable(letGo main.cpp)
 
-target_link_libraries(letGo midi_in_out)
+target_link_libraries(letGo midi_in_out Winmm)
