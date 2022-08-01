@@ -116,7 +116,7 @@ void MidiInput::openMidiDevice()
 
 void MidiInput::midiBufferReady()
 {
-    result  = midiInPrepareHeader(hm, &phm, sizeof(phm));
+    result = midiInPrepareHeader(hm, &phm, sizeof(phm));
     switch (result)
     {
     case MMSYSERR_INVALHANDLE:
@@ -177,5 +177,5 @@ void MidiInput::record()
 
 void MidiInput::hold()
 {
-    Sleep(5000);
+    Sleep(10000);
 }

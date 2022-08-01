@@ -2,13 +2,17 @@
 
 MidiOutput::MidiOutput()
 {
-    quantity_of_devices = midiOutGetNumDevs() - 1;
+    quantity_of_devices = 0;
 
     hmo = nullptr;
+
+    openMidiDevice();
 }
 
 MidiOutput::~MidiOutput()
 {
+    midiOutReset(hmo);
+
     std::cout << "MidiOutput: Destructor" << std::endl;
 }
 
@@ -32,11 +36,6 @@ void CALLBACK MidiOutput::MidiOutProc(HMIDIOUT hmo, UINT wMsg, DWORD_PTR dwInsta
 		std::cout << "unknown" << std::endl;
 		break;
 	}
-}
-
-void MidiOutput::start()
-{
-    openMidiDevice();
 }
 
 void MidiOutput::openMidiDevice()

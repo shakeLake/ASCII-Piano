@@ -11,7 +11,9 @@ class MidiOutput
 {
 private:
     MMRESULT result;
-    UINT quantity_of_devices;
+
+    UINT quantity_of_devices; // should be zero
+
     HMIDIOUT hmo;
 private:
     void openMidiDevice();
@@ -21,8 +23,6 @@ private:
 public:
     MidiOutput();
     ~MidiOutput();
-
-    void start();
 
     void play_a_note(DWORD note);
     // void play_the_song();
