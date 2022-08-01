@@ -1,6 +1,6 @@
 #include "midi_in.hpp"
 
-MidiInput::MidiInput()
+MidiInput::MidiInput(MidiOutput* output)
 {
     quantity_of_devices = midiInGetNumDevs() - 1;
 
@@ -10,6 +10,8 @@ MidiInput::MidiInput()
     phm.dwFlags = 0;
 
     hm = nullptr;
+
+    out = output;
 }
 
 MidiInput::~MidiInput()
@@ -23,7 +25,9 @@ MidiInput::~MidiInput()
 }
 
 void CALLBACK MidiInput::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD_PTR dwInstance, DWORD_PTR dwParam1, DWORD_PTR dwParam2)
-{  
+{
+    MidiOutput* output_p = reinterpret_cast<MidiOutput*>(dwInstance);
+
     switch (wMsg) 
     {
     case MIM_OPEN:
@@ -35,6 +39,7 @@ void CALLBACK MidiInput::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD_PTR dwInst
     case MIM_DATA:
         std::cout << "MIM_DATA: ";
         std::cout << "dwInstance = " << dwInstance << " | dwParam1 = " << dwParam1 << std::dec << " | dwParam2 = " << dwParam2 << std::endl;
+        output_p->play_a_note(dwParam1);
         break;
     case MIM_LONGDATA:
         std::cout << "MIM_LONGDATA" << std::endl;
@@ -81,7 +86,9 @@ void MidiInput::midiCapabilities()
 
 void MidiInput::openMidiDevice()
 {
-    result = midiInOpen(&hm, quantity_of_devices, (DWORD_PTR)MidiInput::MidiInProc, 0, CALLBACK_FUNCTION);
+    DWORD_PTR out_r = reinterpret_cast<DWORD_PTR>(out);
+
+    result = midiInOpen(&hm, quantity_of_devices, (DWORD_PTR)MidiInput::MidiInProc, (DWORD_PTR)out_r, CALLBACK_FUNCTION);
     switch (result)
     {
     case MMSYSERR_ALLOCATED:

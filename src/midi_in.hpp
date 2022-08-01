@@ -12,6 +12,8 @@
 class MidiInput
 {
 private:
+    MidiOutput* out;
+
     MMRESULT result;
 
     MIDIINCAPS data;
@@ -23,10 +25,12 @@ private:
 
     HMIDIIN hm;
 private:
+    void midiCapabilities();
+
     // Callback function
     static void CALLBACK MidiInProc(HMIDIIN, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR);
 
-    void midiCapabilities();
+    void take_and_play(DWORD_PTR);
 
     void openMidiDevice();
 
@@ -35,7 +39,7 @@ private:
     void hold();
 public:
     // Constructor
-    MidiInput();
+    MidiInput(MidiOutput*);
     // Desturctor
     ~MidiInput();
 
