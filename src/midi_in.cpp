@@ -17,12 +17,12 @@ MidiInput::~MidiInput()
     midiInUnprepareHeader(hm, &phm, sizeof(phm));
     midiInStop(hm);
 
-    std::cout << "Destructor" << std::endl;
+    std::cout << "MidiInput: Destructor" << std::endl;
 
     std::cout << '\n';
 }
 
-void CALLBACK MidiInput::midiCallBack(HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
+void CALLBACK MidiInput::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD_PTR dwInstance, DWORD_PTR dwParam1, DWORD_PTR dwParam2)
 {  
     switch (wMsg) 
     {
@@ -34,11 +34,7 @@ void CALLBACK MidiInput::midiCallBack(HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstan
         break;
     case MIM_DATA:
         std::cout << "MIM_DATA: ";
-        std::cout << "dwInstance = " << dwInstance;
-        std::cout << std::hex;
-        std::cout << " | dwParam1 = " << dwParam1;
-        std::cout << std::dec;
-        std::cout << " | dwParam2 = " << dwParam2 << std::endl;
+        std::cout << "dwInstance = " << dwInstance << " | dwParam1 = " << dwParam1 << std::dec << " | dwParam2 = " << dwParam2 << std::endl;
         break;
     case MIM_LONGDATA:
         std::cout << "MIM_LONGDATA" << std::endl;
@@ -58,7 +54,7 @@ void CALLBACK MidiInput::midiCallBack(HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstan
     }
 }
 
-int MidiInput::midiCapabilities()
+void MidiInput::midiCapabilities()
 {
     result = midiInGetDevCaps(quantity_of_devices, &data, sizeof(data));
     switch (result)
@@ -81,13 +77,11 @@ int MidiInput::midiCapabilities()
     }
 
     std::cout << '\n';
-
-    return 0;
 }
 
-int MidiInput::openMidiDevice()
+void MidiInput::openMidiDevice()
 {
-    result = midiInOpen(&hm, quantity_of_devices, (DWORD_PTR)MidiInput::midiCallBack, 0, CALLBACK_FUNCTION);
+    result = midiInOpen(&hm, quantity_of_devices, (DWORD_PTR)MidiInput::MidiInProc, 0, CALLBACK_FUNCTION);
     switch (result)
     {
     case MMSYSERR_ALLOCATED:
@@ -111,11 +105,9 @@ int MidiInput::openMidiDevice()
     }
 
     std::cout << '\n';
-
-    return 0;
 }
 
-int MidiInput::midiBufferReady()
+void MidiInput::midiBufferReady()
 {
     result  = midiInPrepareHeader(hm, &phm, sizeof(phm));
     switch (result)
@@ -160,11 +152,9 @@ int MidiInput::midiBufferReady()
     }
 
     std::cout << '\n';
-
-    return 0;
 }
 
-void MidiInput::start()
+void MidiInput::record()
 {
     midiCapabilities();
 
@@ -174,9 +164,11 @@ void MidiInput::start()
 
     // start
     midiInStart(hm);
+
+    hold();
 }
 
 void MidiInput::hold()
 {
-    Sleep(10000);
+    Sleep(5000);
 }

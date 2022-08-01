@@ -7,10 +7,11 @@
 
 #include <cassert>
 
+#include "midi_out.hpp"
+
 class MidiInput
 {
 private:
-
     MMRESULT result;
 
     MIDIINCAPS data;
@@ -23,22 +24,22 @@ private:
     HMIDIIN hm;
 private:
     // Callback function
-    static void CALLBACK midiCallBack(HMIDIIN, UINT, DWORD, DWORD, DWORD);
+    static void CALLBACK MidiInProc(HMIDIIN, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR);
 
-    int midiCapabilities();
+    void midiCapabilities();
 
-    int openMidiDevice();
+    void openMidiDevice();
 
-    int midiBufferReady();
+    void midiBufferReady();
+    
+    void hold();
 public:
     // Constructor
     MidiInput();
     // Desturctor
     ~MidiInput();
 
-    void start();
-
-    void hold();
+    void record();
 };
 
 #endif /* _MIDI_IN_HPP_ */

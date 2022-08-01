@@ -1,13 +1,11 @@
 #include "midi_in.hpp"
-//#include "midi_out.hpp"
+#include "midi_out.hpp"
 
 int main()
 {
-    MidiInput pno;
+    MidiInput pno_in;
 
-    pno.start();
-
-    pno.hold();
+    pno_in.record();
 
     return 0;
 }
