@@ -84,3 +84,20 @@ void MidiOutput::play_a_note(DWORD note)
         break;
     }
 }
+
+/*
+void MidiOutput::listen(DWORD_PTR note)
+{
+    midiMessages.push_back(note);
+}
+
+void MidiOutput::play_the_song()
+{
+    std::cout << "Playing" << std::endl;
+    for (int i = 0; i != midiMessages.size(); i++)
+    {
+        std::cout << i << std::endl;
+        play_a_note(midiMessages[i]);
+    }
+}
+*/

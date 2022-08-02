@@ -7,6 +7,8 @@
 
 #include <cassert>
 
+#include <vector>
+
 class MidiOutput
 {
 private:
@@ -15,6 +17,8 @@ private:
     UINT quantity_of_devices; // should be zero
 
     HMIDIOUT hmo;
+
+    std::vector<DWORD_PTR> midiMessages;
 private:
     void openMidiDevice();
 
@@ -25,7 +29,11 @@ public:
     ~MidiOutput();
 
     void play_a_note(DWORD note);
-    // void play_the_song();
+
+    /*
+    void listen(DWORD_PTR);
+    void play_the_song();
+    */
 };
 
 #endif /* MIDI_OUT_HPP */

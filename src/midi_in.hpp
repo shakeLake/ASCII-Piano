@@ -25,10 +25,10 @@ private:
 
     HMIDIIN hm;
 private:
-    void midiCapabilities();
-
     // Callback function
     static void CALLBACK MidiInProc(HMIDIIN, UINT, DWORD_PTR, DWORD_PTR, DWORD_PTR);
+
+    void midiCapabilities();
 
     void take_and_play(DWORD_PTR);
 
