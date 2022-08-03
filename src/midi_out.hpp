@@ -18,7 +18,7 @@ private:
 
     HMIDIOUT hmo;
 
-    std::vector<DWORD_PTR> midiMessages;
+    // std::vector<DWORD_PTR> midiMessages;
 private:
     void openMidiDevice();
 
@@ -29,11 +29,6 @@ public:
     ~MidiOutput();
 
     void play_a_note(DWORD note);
-
-    /*
-    void listen(DWORD_PTR);
-    void play_the_song();
-    */
 };
 
 #endif /* MIDI_OUT_HPP */
