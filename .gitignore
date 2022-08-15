@@ -5,3 +5,4 @@ CMakeFiles/
 **/Makefile
 **/typescript
 **/cmake_install.cmake
+*.sh
