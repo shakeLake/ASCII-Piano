@@ -6,3 +6,5 @@ CMakeFiles/
 **/typescript
 **/cmake_install.cmake
 *.sh
+.vscode/
+build/
