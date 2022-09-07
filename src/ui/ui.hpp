@@ -1,17 +1,22 @@
 #include <iostream>
-#include <thread>
+
+#include <map>
+
+//#include <thread>
 
 class Ui
 {
 private:
-    const std::map<unsigned short, char> note_char;
+    std::map<char, unsigned short> note_char;
 
-    char piano[];
+    std::string keyboard;
 
     void replace();
 public:
     Ui();
     ~Ui();
+
+    void start(unsigned long data);
 
     void draw();
 };

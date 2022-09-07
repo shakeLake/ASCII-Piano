@@ -31,7 +31,11 @@ void CALLBACK MidiInput::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD_PTR dwInst
 
     output_cb->play_a_note(dwParam1);
 
+    // la-la->draw(dwParam1);
+
     #ifdef DEBUG
+        std::cout << std::hex;
+
         switch (wMsg) 
         {
         case MIM_OPEN:
