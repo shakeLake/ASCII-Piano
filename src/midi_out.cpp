@@ -13,34 +13,39 @@ MidiOutput::~MidiOutput()
 {
     midiOutReset(hmo);
 
-    std::cout << "MidiOutput: Destructor" << std::endl;
+    #ifdef DEBUG
+        std::cout << "MidiOutput: Destructor" << std::endl;
+    #endif
 }
 
 void CALLBACK MidiOutput::MidiOutProc(HMIDIOUT hmo, UINT wMsg, DWORD_PTR dwInstance, DWORD_PTR dwParam1, DWORD_PTR dwParam2)
 {
-	switch (wMsg)
-	{
-	case MOM_OPEN:
-		std::cout << "MOM_OPEN" << std::endl;
-		break;
-	case MOM_CLOSE:
-		std::cout << "MOM_CLOSE" << std::endl;
-		break;
-	case MOM_POSITIONCB:
-		std::cout << "MOM_POSITIONCB" << std::endl;
-		break;
-	case MOM_DONE:
-		std::cout << "MOM_DONE" << std::endl;
-		break;
-	default:
-		std::cout << "unknown" << std::endl;
-		break;
-	}
+    #ifdef DEBUG
+        switch (wMsg)
+        {
+        case MOM_OPEN:
+            std::cout << "MOM_OPEN" << std::endl;
+            break;
+        case MOM_CLOSE:
+            std::cout << "MOM_CLOSE" << std::endl;
+            break;
+        case MOM_POSITIONCB:
+            std::cout << "MOM_POSITIONCB" << std::endl;
+            break;
+        case MOM_DONE:
+            std::cout << "MOM_DONE" << std::endl;
+            break;
+        default:
+            std::cout << "unknown" << std::endl;
+            break;
+	    }
+    #endif
 }
 
 void MidiOutput::openMidiDevice()
 {
     result = midiOutOpen(&hmo, quantity_of_devices, (DWORD_PTR)MidiOutput::MidiOutProc, 0, CALLBACK_FUNCTION);
+
     switch (result)
     {
     case MMSYSERR_ALLOCATED:
@@ -59,7 +64,11 @@ void MidiOutput::openMidiDevice()
         std::cerr << "MidiOutOpen: The system is unable to allocate or lock memory" << std::endl;
         assert(false);
     default:
-        std::cout << "MidiOutOpen: successful" << std::endl;
+
+        #ifdef DEBUG
+            std::cout << "MidiOutOpen: successful" << std::endl;
+        #endif
+
         break;
     }
 
@@ -69,35 +78,21 @@ void MidiOutput::openMidiDevice()
 void MidiOutput::play_a_note(DWORD note)
 {
     result = midiOutShortMsg(hmo, note);
-    switch (result)
-    {
-    case MIDIERR_BADOPENMODE:
-        std::cerr << "midiOutShortMsg: The application sent a message without a status byte to a stream handle" << std::endl;
-        break;
-    case MIDIERR_NOTREADY:
-        std::cerr << "midiOutShortMsg: The hardware is busy with other data" << std::endl;
-        break;
-    case MMSYSERR_INVALHANDLE:
-        std::cerr << "midiOutShortMsg: The specified device handle is invalid" << std::endl;
-        break;
-    default:
-        break;
-    }
+    
+    #ifdef DEBUG
+        switch (result)
+        {
+        case MIDIERR_BADOPENMODE:
+            std::cerr << "midiOutShortMsg: The application sent a message without a status byte to a stream handle" << std::endl;
+            break;
+        case MIDIERR_NOTREADY:
+            std::cerr << "midiOutShortMsg: The hardware is busy with other data" << std::endl;
+            break;
+        case MMSYSERR_INVALHANDLE:
+            std::cerr << "midiOutShortMsg: The specified device handle is invalid" << std::endl;
+            break;
+        default:
+            break;
+        }
+    #endif
 }
-
-/*
-void MidiOutput::listen(DWORD_PTR note)
-{
-    midiMessages.push_back(note);
-}
-
-void MidiOutput::play_the_song()
-{
-    std::cout << "Playing" << std::endl;
-    for (int i = 0; i != midiMessages.size(); i++)
-    {
-        std::cout << i << std::endl;
-        play_a_note(midiMessages[i]);
-    }
-}
-*/

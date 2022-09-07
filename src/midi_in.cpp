@@ -19,9 +19,10 @@ MidiInput::~MidiInput()
     midiInUnprepareHeader(hm, &phm, sizeof(phm));
     midiInStop(hm);
 
-    std::cout << "MidiInput: Destructor" << std::endl;
-
-    std::cout << '\n';
+    #ifdef DEBUG
+        std::cout << "MidiInput: Destructor" << std::endl;
+        std::cout << '\n';
+    #endif
 }
 
 void CALLBACK MidiInput::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD_PTR dwInstance, DWORD_PTR dwParam1, DWORD_PTR dwParam2)
@@ -30,34 +31,36 @@ void CALLBACK MidiInput::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD_PTR dwInst
 
     output_cb->play_a_note(dwParam1);
 
-    switch (wMsg) 
-    {
-    case MIM_OPEN:
-        std::cout << "MIM_OPEN" << std::endl;
-        break;
-    case MIM_CLOSE:
-        std::cout << "MIM_CLOSE" << std::endl;
-        break;
-    case MIM_DATA:
-        std::cout << "MIM_DATA: ";
-        std::cout << "dwInstance = " << dwInstance << " | dwParam1 = " << dwParam1 << std::dec << " | dwParam2 = " << dwParam2 << std::endl;
-        break;
-    case MIM_LONGDATA:
-        std::cout << "MIM_LONGDATA" << std::endl;
-        break;
-    case MIM_ERROR:
-        std::cout << "MIM_ERROR" << std::endl;
-        break;
-    case MIM_LONGERROR:
-        std::cout << "MIM_LONGERROR" << std::endl;
-        break;
-    case MIM_MOREDATA:
-        std::cout << "MIM_MOREDATA" << std::endl;
-        break;
-    default:
-        std::cout << "unknown" << std::endl;
-        break;
-    }
+    #ifdef DEBUG
+        switch (wMsg) 
+        {
+        case MIM_OPEN:
+            std::cout << "MIM_OPEN" << std::endl;
+            break;
+        case MIM_CLOSE:
+            std::cout << "MIM_CLOSE" << std::endl;
+            break;
+        case MIM_DATA:
+            std::cout << "MIM_DATA: ";
+            std::cout << "dwInstance = " << dwInstance << " | dwParam1 = " << dwParam1 << std::dec << " | dwParam2 = " << dwParam2 << std::endl;
+            break;
+        case MIM_LONGDATA:
+            std::cout << "MIM_LONGDATA" << std::endl;
+            break;
+        case MIM_ERROR:
+            std::cout << "MIM_ERROR" << std::endl;
+            break;
+        case MIM_LONGERROR:
+            std::cout << "MIM_LONGERROR" << std::endl;
+            break;
+        case MIM_MOREDATA:
+            std::cout << "MIM_MOREDATA" << std::endl;
+            break;
+        default:
+            std::cout << "unknown" << std::endl;
+            break;
+        }
+    #endif
 }
 
 void MidiInput::midiCapabilities()
@@ -78,7 +81,11 @@ void MidiInput::midiCapabilities()
         std::cerr << "MidiInGetDevCaps: The system is unable to allocate or lock memory" << std::endl;
         assert(false);
     default:
-        std::cout << "MidiInGetDevCaps: successful" << std::endl;
+
+        #ifdef DEBUG
+            std::cout << "MidiInGetDevCaps: successful" << std::endl;
+        #endif
+
         break;
     }
 
@@ -106,7 +113,11 @@ void MidiInput::openMidiDevice()
         std::cerr << "MidiInOpen: The system is unable to allocate or lock memory" << std::endl;
         assert(false);
     default:
-        std::cout << "MidiInOpen: successful" << std::endl;
+    
+        #ifdef DEBUG
+            std::cout << "MidiInOpen: successful" << std::endl;
+        #endif
+
         break;
     }
 
@@ -128,7 +139,9 @@ void MidiInput::midiBufferReady()
         std::cerr << "MidiInPrepareHeader: The system is unable to allocate or lock memory" << std::endl;
         assert(false);
     default:
-        std::cout << "MidiInPrepareHeader: successful" << std::endl;
+        #ifdef DEBUG
+            std::cout << "MidiInPrepareHeader: successful" << std::endl;
+        #endif
         break;
     }
 
@@ -153,7 +166,9 @@ void MidiInput::midiBufferReady()
         std::cerr << "MidiAddBuffer: The system is unable to allocate or lock memory" << std::endl;
         assert(false);
     default:
-        std::cout << "MidiAddBuffer: successful" << std::endl;
+        #ifdef DEBUG
+            std::cout << "MidiAddBuffer: successful" << std::endl;
+        #endif
         break;
     }
 
