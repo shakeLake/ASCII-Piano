@@ -1,17 +1,7 @@
 #ifndef _MIDI_OUT_HPP_
 #define _MIDI_OUT_HPP_
 
-// set RELEASE to build without logs
-#define DEBUG
-
-// I / O
-#include <iostream>
-
-// midi
-#include <Windows.h>
-
-// assert
-#include <cassert>
+#include "../midi.hpp"
 
 class MidiOutput
 {

@@ -1,20 +1,14 @@
-#include <iostream>
-
-#include <map>
-
-//#include <thread>
+#include "../midi.hpp"
 
 class Ui
 {
 private:
-    std::map<char, unsigned short> note_char;
-
-    std::string keyboard;
+    std::string keyboard[13];
 
     void replace();
 public:
     Ui();
-    ~Ui();
+    ~Ui() = default;
 
     void start(unsigned long data);
 

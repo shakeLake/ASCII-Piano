@@ -1,6 +1,4 @@
-#include "midi_in_out/midi_in.hpp"
-
-#include "ui/ui.hpp"
+#include "midi.hpp"
 
 int main()
 {
@@ -11,7 +9,7 @@ int main()
 
     pno_in.record();
     */
-
+    
     Ui test;
 
     test.draw();

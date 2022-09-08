@@ -2,44 +2,127 @@
 
 Ui::Ui()
 {
-    std::cout << "1" << std::endl;
+    /*
+    // 10
+    char_key['0'] = 1;
+    char_key['Q'] = 2;
+    char_key['1'] = 3;
+    char_key['2'] = 4;
+    char_key['W'] = 5;
+    char_key['3'] = 6;
+    char_key['E'] = 7;
+    char_key['4'] = 8;
+    char_key['5'] = 9;
+    char_key['R'] = 10;
 
-    note_char =
-    { 
-        {'0', 1}, {'Q', 2}, {'1', 3}, {'2', 4}, {'W', 5}, {'3', 6}, {'E', 7}, {'4', 8}, {'5', 9}, 
-        {'R', 10}, {'6', 11}, {'T', 12}, {'7', 13}, {'Y', 14}, {'8', 15}, {'9', 16}, {'U', 17}, 
-        {'q', 18}, {'I', 19}, {'w', 20}, {'e', 21}, {'O', 22}, {'r', 23}, {'P', 24}, {'T', 25}, 
-        {'A', 26}, {'y', 27}, {'u', 28}, {'S', 29}, {'i', 30}, {'D', 31}, {'o', 32}, {'p', 33}, 
-        {'F', 34}, {'a', 35}, {'G', 36}, {'s', 37}, {'H', 38}, {'d', 39}, {'f', 40}, {'J', 41}, 
-        {'g', 42}, {'K', 43}, {'h', 44}, {'j', 45}, {'L', 46}, {'k', 47}, {'Z', 48}, {'l', 49}, 
-        {'X', 50}, {'z', 51}, {'x', 52}, {'C', 53}, {'c', 54}, {'V', 55}, {'v', 56}, {'b', 57}, 
-        {'B', 58}, {'n', 59}, {'N', 60}, {'m', 61}, {'M', 62}, {'!', 63}, {'?', 64}, {'$', 65}, 
-        {'+', 66}, {'^', 67}, {'-', 68},{'@', 69}, {'\"', 70}, {'#', 71}, {'{', 72}, {'%', 73},
-        {'}', 74}, {'&', 75}, {'*', 76}, {'[', 77}, {')', 78}, {']', 79}, {'(', 80}, {';', 81}, 
-        {',', 82}, {':', 83}, {'`', 84}, {'<', 85}, {'~', 86}, {'>', 87}, {'.', 88}
-    };
+    // 20
+    char_key['6'] = 11;
+    char_key['T'] = 12;
+    char_key['7'] = 13;
+    char_key['Y'] = 14;
+    char_key['8'] = 15;
+    char_key['9'] = 16;
+    char_key['U'] = 17;
+    char_key['q'] = 18;
+    char_key['I'] = 19;
+    char_key['w'] = 20;
 
-    keyboard = 
-        R"(|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|"|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|
-		|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|"|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|
-		|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|"|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|
-		|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|"|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|
-		|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|"|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|
-		|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|"|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|
-		|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|"|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|
-		|00|_|11|2|_|3|_|4|55|_|6|_|7|_|88|9|_|q|_|w|ee|_|r|_|t|_|yy|u|_|i|_|o|pp|_|a|_|s|_|dd|f|_|g|_|h|jj|_|k|_|l|_|zz|x|_|c|_|v|bb|_|n|_|m|_|!!|?|_|+|_|-|@@|_|#|_|%|_|&&|*|_|)|_|(|;;|_|:|_|<|_|>>|..|
-		|000|111|22|333|44|555|666|777|888|99|qqq|ww|eee|rrr|ttt|yyy|uu|iii|oo|ppp|aaa|sss|ddd|ff|ggg|hh|jjj|kkk|lll|zzz|xx|ccc|vv|bbb|nnn|mmm|!!!|??|+++|--|@@@|###|%%%|&&&|**|)))|((|;;;|:::|<<<|>>>|..|
-		|000|111|22|333|44|555|666|777|888|99|qqq|ww|eee|rrr|ttt|yyy|uu|iii|oo|ppp|aaa|sss|ddd|ff|ggg|hh|jjj|kkk|lll|zzz|xx|ccc|vv|bbb|nnn|mmm|!!!|??|+++|--|@@@|###|%%%|&&&|**|)))|((|;;;|:::|<<<|>>>|..|
-		|000|111|22|333|44|555|666|777|888|99|qqq|ww|eee|rrr|ttt|yyy|uu|iii|oo|ppp|aaa|sss|ddd|ff|ggg|hh|jjj|kkk|lll|zzz|xx|ccc|vv|bbb|nnn|mmm|!!!|??|+++|--|@@@|###|%%%|&&&|**|)))|((|;;;|:::|<<<|>>>|..|
-		|000|111|22|333|44|555|666|777|888|99|qqq|ww|eee|rrr|ttt|yyy|uu|iii|oo|ppp|aaa|sss|ddd|ff|ggg|hh|jjj|kkk|lll|zzz|xx|ccc|vv|bbb|nnn|mmm|!!!|??|+++|--|@@@|###|%%%|&&&|**|)))|((|;;;|:::|<<<|>>>|..|
-		|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|)";
+    // 30
+    char_key['e'] = 21;
+    char_key['O'] = 22;
+    char_key['r'] = 23;
+    char_key['P'] = 24;
+    char_key['T'] = 25;
+    char_key['A'] = 26;
+    char_key['y'] = 27;
+    char_key['u'] = 28;
+    char_key['S'] = 29;
+    char_key['i'] = 30;
 
-        std::cout << "2" << std::endl;
-}
+    // 40
+    char_key['D'] = 31;
+    char_key['o'] = 32;
+    char_key['p'] = 33;
+    char_key['F'] = 34;
+    char_key['a'] = 35;
+    char_key['G'] = 36;
+    char_key['s'] = 37;
+    char_key['H'] = 38;
+    char_key['d'] = 39;
+    char_key['f'] = 40;
 
-Ui::~Ui()
-{
-    std::cout << "Destructor" << std::endl;
+    //50
+    char_key['J'] = 41;
+    char_key['g'] = 42;
+    char_key['K'] = 43;
+    char_key['h'] = 44;
+    char_key['j'] = 45;
+    char_key['L'] = 46;
+    char_key['k'] = 47;
+    char_key['Z'] = 48;
+    char_key['l'] = 49;
+    char_key['X'] = 50;
+
+    //60
+    char_key['z'] = 52;
+    char_key['x'] = 52;
+    char_key['C'] = 53;
+    char_key['c'] = 54;
+    char_key['V'] = 55;
+    char_key['v'] = 56;
+    char_key['b'] = 57;
+    char_key['B'] = 58;
+    char_key['n'] = 59;
+    char_key['N'] = 60;
+
+    //70
+    char_key['m'] = 61;
+    char_key['M'] = 62;
+    char_key['!'] = 63;
+    char_key['?'] = 64;
+    char_key['$'] = 65;
+    char_key['+'] = 66;
+    char_key['^'] = 67;
+    char_key['-'] = 68;
+    char_key['@'] = 69;
+    char_key['/'] = 70;
+    
+    // 80
+    char_key['#'] = 71;
+    char_key['{'] = 72;
+    char_key['%'] = 73;
+    char_key['}'] = 74;
+    char_key['&'] = 75;
+    char_key['*'] = 76;
+    char_key['['] = 77;
+    char_key[')'] = 78;
+    char_key[']'] = 79;
+    char_key['('] = 80;
+
+    // 88
+    char_key[';'] = 81;
+    char_key[','] = 82;
+    char_key[':'] = 83;
+    char_key['`'] = 84;
+    char_key['<'] = 85;
+    char_key['~'] = 86;
+    char_key['>'] = 87;
+    char_key['.'] = 88;
+    */
+
+    keyboard[0] = R"(|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|/|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|)";
+    keyboard[1] = "|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|/|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|";
+    keyboard[2] = "|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|/|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|";
+    keyboard[3] = "|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|/|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|";
+    keyboard[4] = "|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|/|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|";
+    keyboard[5] = "|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|/|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|";
+    keyboard[6] = "|00|Q|11|2|W|3|E|4|55|R|6|T|7|Y|88|9|U|q|I|w|ee|O|r|P|t|A|yy|u|S|i|D|o|pp|F|a|G|s|H|dd|f|J|g|K|h|jj|L|k|Z|l|X|zz|x|C|c|V|v|bb|B|n|N|m|M|!!|?|$|+|^|-|@@|/|#|{|%|}|&&|*|[|)|]|(|;;|,|:|`|<|~|>>|..|";
+    keyboard[7] = "|00|_|11|2|_|3|_|4|55|_|6|_|7|_|88|9|_|q|_|w|ee|_|r|_|t|_|yy|u|_|i|_|o|pp|_|a|_|s|_|dd|f|_|g|_|h|jj|_|k|_|l|_|zz|x|_|c|_|v|bb|_|n|_|m|_|!!|?|_|+|_|-|@@|_|#|_|%|_|&&|*|_|)|_|(|;;|_|:|_|<|_|>>|..|";
+    keyboard[8] = "|000|111|22|333|44|555|666|777|888|99|qqq|ww|eee|rrr|ttt|yyy|uu|iii|oo|ppp|aaa|sss|ddd|ff|ggg|hh|jjj|kkk|lll|zzz|xx|ccc|vv|bbb|nnn|mmm|!!!|??|+++|--|@@@|###|%%%|&&&|**|)))|((|;;;|:::|<<<|>>>|..|";
+    keyboard[9] = "|000|111|22|333|44|555|666|777|888|99|qqq|ww|eee|rrr|ttt|yyy|uu|iii|oo|ppp|aaa|sss|ddd|ff|ggg|hh|jjj|kkk|lll|zzz|xx|ccc|vv|bbb|nnn|mmm|!!!|??|+++|--|@@@|###|%%%|&&&|**|)))|((|;;;|:::|<<<|>>>|..|";
+    keyboard[10] = "|000|111|22|333|44|555|666|777|888|99|qqq|ww|eee|rrr|ttt|yyy|uu|iii|oo|ppp|aaa|sss|ddd|ff|ggg|hh|jjj|kkk|lll|zzz|xx|ccc|vv|bbb|nnn|mmm|!!!|??|+++|--|@@@|###|%%%|&&&|**|)))|((|;;;|:::|<<<|>>>|..|";
+    keyboard[11] = "|000|111|22|333|44|555|666|777|888|99|qqq|ww|eee|rrr|ttt|yyy|uu|iii|oo|ppp|aaa|sss|ddd|ff|ggg|hh|jjj|kkk|lll|zzz|xx|ccc|vv|bbb|nnn|mmm|!!!|??|+++|--|@@@|###|%%%|&&&|**|)))|((|;;;|:::|<<<|>>>|..|";
+    keyboard[12] = "|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|___|__|___|___|___|___|__|";
 }
 
 void Ui::start(unsigned long data)
@@ -89,20 +172,12 @@ void Ui::draw()
 {
     for (int i = 0; i != 194; i++)
         std::cout << '_';
+    std::cout << std::endl;
 
     // body
-
-    std::cout << "1: " << keyboard;
-    /*
     for (unsigned int height = 0; height != 13; height++)
     {
-        for (unsigned int width = 0; width != 194; width++)
-            std::cout << keyboard[width];
-
+        std::cout << keyboard[height];
         std::cout << std::endl;
     }
-    */
-
-    for (int i = 0; i != 194; i++)
-        std::cout << '_';
 }
