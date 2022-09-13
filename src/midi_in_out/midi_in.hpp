@@ -1,7 +1,11 @@
 #ifndef _MIDI_IN_HPP_
 #define _MIDI_IN_HPP_
 
-#include "../midi.hpp"
+#include "../default.hpp"
+
+#include "../ui/ui.hpp"
+
+#include "midi_out.hpp"
 
 class MidiInput
 {

@@ -1,7 +1,7 @@
 #ifndef _MIDI_OUT_HPP_
 #define _MIDI_OUT_HPP_
 
-#include "../midi.hpp"
+#include "../default.hpp"
 
 class MidiOutput
 {

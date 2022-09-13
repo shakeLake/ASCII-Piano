@@ -1,4 +1,5 @@
-#include "midi.hpp"
+#include "default.hpp"
+#include "midi_in_out/midi_in.hpp"
 
 int main()
 {

@@ -5,6 +5,6 @@ project(midi_src)
 add_subdirectory(midi_in_out)
 add_subdirectory(ui)
 
-add_executable(letGo main.cpp midi.hpp)
+add_executable(letGo main.cpp default.hpp)
 
 target_link_libraries(letGo midiInOut midiUi Winmm)
