@@ -18,7 +18,7 @@ private:
 
     std::string keyboard[13];
 
-    void replace();
+    void replace(unsigned long, bool);
 public:
     Ui();
     ~Ui() = default;

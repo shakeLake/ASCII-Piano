@@ -7,10 +7,15 @@
 
 #include "midi_out.hpp"
 
+typedef std::pair<MidiOutput*, Ui*> MidiOut_UI;
+
 class MidiInput
 {
 private:
     MidiOutput* out;
+    Ui* inter;
+
+    MidiOut_UI objectcs_ptr;
 
     MMRESULT result;
 
@@ -37,7 +42,8 @@ private:
     void hold();
 public:
     // Constructor
-    MidiInput(MidiOutput*);
+    MidiInput(MidiOutput*, Ui*);
+
     // Desturctor
     ~MidiInput();
 

@@ -3,17 +3,12 @@
 
 int main()
 {
-    /*
     MidiOutput pno_out;
+    Ui draw;
 
-    MidiInput pno_in(&pno_out);
+    MidiInput pno_in(&pno_out, &draw);
 
     pno_in.record();
-    */
-    
-    Ui test;
-
-    test.draw();
 
     return 0;
 }
