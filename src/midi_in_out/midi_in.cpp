@@ -36,7 +36,7 @@ void CALLBACK MidiInput::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD_PTR dwInst
 
     objectcs->first->play_a_note(dwParam1);
 
-    //objectcs->second->start(dwParam1);
+    objectcs->second->start(dwParam1);
 
     #ifdef DEBUG
         //std::cout << std::hex;

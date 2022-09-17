@@ -30,7 +30,9 @@ void Ui::start(unsigned long data)
 
             64 00 00 hex = 6553600 dec
 
-            00 3c 00 is note
+            00 3c 00 is note (60) - middle C
+            00 3c 00 (hex) = 15360 (dec) 
+            15360 / 16 / 16 = 60 - middle C
 
             90 is pressed note or not
 
@@ -38,26 +40,29 @@ void Ui::start(unsigned long data)
         */
         pressed = 1;
 
-        note = data - 6553600 - 144 - ;
+        note = ((data - 6553600 - 144) / 16) / 16;
 
-        std::cout << note << " : " << pressed << std::endl;
+        #ifdef DEBUG
+            std::cout << note << " : " << pressed << std::endl;
+        #endif
     }
     else
     {
         pressed = 0;
 
-        note = data - 4194304 - 128 - ;
+        note = ((data - 4194304 - 128) / 16) / 16;
 
-        std::cout << note << " : " << pressed << std::endl;
+        #ifdef DEBUG
+            std::cout << note << " : " << pressed << std::endl;
+        #endif
     }
 
-    std::cout << "replace" << std::endl;
-    replace(note, pressed);
+    if (note < 1000)
+        replace(note - 20, pressed);
 }
 
 void Ui::replace(unsigned long note, bool pressed)
 {
-    /*
     for (unsigned int i = 0; i != 12; i++)
     {
         for (unsigned int j = 0; j != keyboard[i].size(); j++)
@@ -71,7 +76,6 @@ void Ui::replace(unsigned long note, bool pressed)
             }
         }
     }
-    */
 
     draw();
 }
