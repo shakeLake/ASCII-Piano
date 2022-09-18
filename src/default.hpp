@@ -2,7 +2,7 @@
 #define MIDI_HPP_
 
 // DEBUG or RELEASE
-#define DEBUG
+#define RELEASE
 
 // I / O
 #include <iostream>
@@ -13,8 +13,6 @@
 // STL
 #include <array>
 #include <utility>
-
-// #include <thread>
 
 // assert
 #include <cassert>

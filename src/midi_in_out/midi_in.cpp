@@ -39,7 +39,7 @@ void CALLBACK MidiInput::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD_PTR dwInst
     objectcs->second->start(dwParam1);
 
     #ifdef DEBUG
-        //std::cout << std::hex;
+        std::cout << std::hex;
 
         switch (wMsg) 
         {
@@ -98,7 +98,9 @@ void MidiInput::midiCapabilities()
         break;
     }
 
-    std::cout << '\n';
+    #ifdef DEBUG
+        std::cout << '\n';
+    #endif
 }
 
 void MidiInput::openMidiDevice()
@@ -130,7 +132,9 @@ void MidiInput::openMidiDevice()
         break;
     }
 
-    std::cout << '\n';
+    #ifdef DEBUG
+        std::cout << '\n';
+    #endif
 }
 
 void MidiInput::midiBufferReady()
@@ -154,7 +158,9 @@ void MidiInput::midiBufferReady()
         break;
     }
 
-    std::cout << '\n';
+    #ifdef DEBUG
+        std::cout << '\n';
+    #endif
 
     result = midiInAddBuffer(hm, &phm, sizeof(phm));
     switch (result)
@@ -181,7 +187,9 @@ void MidiInput::midiBufferReady()
         break;
     }
 
-    std::cout << '\n';
+    #ifdef DEBUG
+        std::cout << '\n';
+    #endif
 }
 
 void MidiInput::record()
@@ -199,7 +207,7 @@ void MidiInput::record()
 }
 
 void MidiInput::hold()
-{
+{   
     std::cout << "Press Enter to stop" << "\n\n";
     std::cin.get();
 }

@@ -17,6 +17,7 @@ private:
     };
 
     std::string keyboard[13];
+    std::string keyboard_zero[13];
 
     void replace(unsigned long, bool);
 public:

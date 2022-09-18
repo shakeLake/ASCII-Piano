@@ -71,8 +71,9 @@ void MidiOutput::openMidiDevice()
 
         break;
     }
-
-    std::cout << '\n';
+    #ifdef DEBUG
+        std::cout << '\n';
+    #endif
 }
 
 void MidiOutput::play_a_note(DWORD note)
