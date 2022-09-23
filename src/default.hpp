@@ -12,7 +12,6 @@
 
 // STL
 #include <array>
-#include <utility>
 
 // assert
 #include <cassert>

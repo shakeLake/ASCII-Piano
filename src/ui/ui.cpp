@@ -29,6 +29,8 @@ Ui::Ui()
     keyboard_zero[10] = "|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |  |";
     keyboard_zero[11] = "|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |  |";
     keyboard_zero[12] = "|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|___|__|";
+
+    draw();
 }
 
 void Ui::start(unsigned long data)
@@ -83,15 +85,12 @@ void Ui::replace(unsigned long note, bool pressed)
         {
             if (keyboard[i][j] == '|' || keyboard[i][j] == '_')
                 continue;
-            
+                                                    
             if (keyboard[i][j] == key_char[note - 1] && pressed == 1)
-            {
                 keyboard_zero[i][j] = '#';
-            }
+
             else if (keyboard[i][j] == key_char[note - 1] && pressed == 0)
-            {
                 keyboard_zero[i][j] = ' ';
-            }
         }
     }
 
