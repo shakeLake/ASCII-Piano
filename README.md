@@ -1,6 +1,6 @@
 # ASCII Piano (win API)
 
-### 88 keys piano
+### 88-key
 
 ![2022-09-23 16_11_16-Window](https://user-images.githubusercontent.com/99725123/191948321-a46228ac-72b9-4283-8a4c-924f3c4acb5d.png)
 
