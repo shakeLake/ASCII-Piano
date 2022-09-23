@@ -6,7 +6,7 @@
 
 ### How to build ASCII-Piano
 
-`cd ..\..\midi_tool`
+`cd ..\..\ASCII-Piano`
 
 `cmake -G "MinGW Makefiles" -B "build" -S "src"`
 
